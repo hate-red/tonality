@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 
 export default function Form() {
     const [text, setText] = useState('');
-    const [tonality, setTonality] = useState(1.0)
+    const [tonality, setTonality] = useState('');
+    const [description, setDescription] = useState('');
 
     function handleText(event) {
         event.preventDefault();
@@ -11,13 +12,23 @@ export default function Form() {
             'text': text,
         }
 
-        const response = fetch("http://localhost:8000/at", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(requestBody)
-        })
+        async function makePostRequest() {
+            const response = await fetch("http://localhost:8000/at", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(requestBody)
+            })
 
-        console.log(response.json())
+            const parsedResponse = await response.json();
+
+            return parsedResponse;
+        }
+
+        makePostRequest().then(result => {
+            setTonality(result.tonality);
+            setDescription(result.description);
+        });
+
     }
 
     return (
@@ -35,7 +46,26 @@ export default function Form() {
                 <button className="form-button" type="submit">
                     <span className="button-text">Submit</span>    
                 </button>
+
+                <Result tonality={ tonality } description={ description } />
+
             </div>
         </form>
+    );
+}
+
+
+function Result ({ tonality, description }) {
+    return (
+        <div className="result-block">
+            <span className="sentiment-description">
+                <i>Result: </i>{ tonality }
+            </span>
+            <br></br>
+            <span className="sentiment-description" >
+                <i>Description: </i>{ description }
+            </span>
+        </div>
+        
     );
 }

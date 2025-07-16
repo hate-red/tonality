@@ -5,6 +5,8 @@
   --form-bg-color: rgb(37,36,39);
 }
 
+
+/* HEADER */
 .header {
   background-color: var(--main-bg-color);
 
@@ -51,6 +53,8 @@
   margin-top: 60px;
 }
 
+
+/* FORM */
 .form-block {
   margin: 80px auto auto;
   padding: 20px 50px;
@@ -62,8 +66,8 @@
   border-radius: 20px;
 }
 
-.form-wrapper {
-}
+/* .form-wrapper {
+} */
 
 .form-title {
   font-family:'Inter';
@@ -98,7 +102,7 @@
 .form-button {
   display: block;
 
-  margin: 20px auto;
+  margin: 20px auto 40px;
   padding:10px 20px;
 
   border-radius: 10px;
@@ -107,12 +111,45 @@
   background-color: #f2eeee;
   color: var(--main-bg-color);
 }
+.form-button:hover {
+  background-color: #fff;
+}
 
 .button-text {
   font-family: 'Inter';
   font-size: 20px;
   font-weight: 400;
 }
-.form-button:hover {
+
+.result-block {
   background-color: #fff;
+  color: var(--main-bg-color);
+
+  border-radius: 10px;
+
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between; */
+
+  margin: 10px auto;
+  padding: 10px 20px;
+}
+
+.result-block .sep {
+  background-color: var(--main-bg-color);
+  width: 10px;
+  height: 3px;
+}
+
+.sentiment-number {
+  font-family: 'Inter';
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.sentiment-description {
+  font-family: 'Inter';
+  /* font-style: italic; */
+  font-size: 20px;
+  font-weight: 400;
 }
