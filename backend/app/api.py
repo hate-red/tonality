@@ -29,7 +29,7 @@ async def read_root() -> dict:
 
 
 @app.post('/at', tags=['sa'])
-def analyze_tonality(text: Text) -> dict:
+async def analyze_tonality(text: Text) -> dict:
     tonality = len(text.text)
 
     return {
